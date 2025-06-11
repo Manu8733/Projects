@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login </title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- Stiluri personalizate -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comforter+Brush&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stiluri suplimentare -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Heebo', sans-serif;
+            background-image: url('./assets/images/login1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            max-height: 80vh; 
+            overflow-y: fixed;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .header {
+            position: relative !important;
+            z-index: 1;
+        }
+
+        .contact-section {
+            padding: 50px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+            
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(15px);
+            
+        
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-button,
+        .register-button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-button {
+            background-color: #007bff;
+        }
+
+        .register-button {
+            background-color: #0056b3;
+            margin-left: 10px;
+        }
+
+        .register-button:hover {
+            background-color: #00408b;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body id="top">
+    <!-- Antet -->
+    <header class="header" data-header>
+        <div class="container">
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li><a href="index.php" class="navbar-link">Home</a></li>
+                    <li><a href="index.php" class="navbar-link">News</a></li>
+                    <li><a href="desprenoi.php" class="navbar-link">About us</a></li>
+                    <li><a href="Store.php" class="navbar-link active">Store</a></li>
+                    <li><a href="login.html" class="navbar-link active">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Principal -->
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h1 class="section-title">Login</h1>
+                <div class="overlay">
+                    <form action="login.php" method="post" class="login-form">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <div class="button-container">
+                            <button type="submit" class="login-button">Login</button>
+                            <button type="button" class="register-button" onclick="window.location.href='register.html';">Sign-up</button>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </section>
+    </main>
+        
+    <!-- Subsol -->
+    <footer class="footer" style="position: absolute; bottom: 0; width: 100%;">
+        <div class="container">
+          <p>&copy; 2024 GameBox</p>
+        </div>
+      </footer>
+    
+
+    <!-- JavaScript pentru afișarea mesajelor de eroare -->
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error')) {
+                let errorMsg = '';
+                if (urlParams.get('error') === 'incorrect_password') {
+                    errorMsg = 'Parolă incorectă!';
+                } else if (urlParams.get('error') === 'incorrect_username') {
+                    errorMsg = 'Nume de utilizator incorect!';
+                }
+
+                if (errorMsg) {
+                    alert(errorMsg);
+                }
+            }
+            if (urlParams.has('info') && urlParams.get('info') === 'ok') {
+                alert('Utilizator înregistrat cu succes');
+            }
+        };
+    </script>
+
+</body>
+
+</html>

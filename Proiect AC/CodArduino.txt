@@ -1,0 +1,95 @@
+const int pinLumina = 2;
+const int pinVentLed = 3;
+const int pinVentMotor = 4;
+
+const int pinButonLumina = 5;
+const int pinButonVent = 6;
+
+const int pinTemp = A0;
+
+
+bool luminaOn = false;
+bool ventilatieOn = false;
+bool controlManual = false;
+
+void setup() {
+  pinMode(pinLumina, OUTPUT);
+  pinMode(pinVentLed, OUTPUT);
+  pinMode(pinVentMotor, OUTPUT);
+
+  pinMode(pinButonLumina, INPUT);
+  pinMode(pinButonVent, INPUT);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+  if (digitalRead(pinButonLumina) == HIGH) {
+    delay(200); 
+    luminaOn = !luminaOn;
+    digitalWrite(pinLumina, luminaOn ? HIGH : LOW);
+  }
+
+  if (digitalRead(pinButonVent) == HIGH) {
+    delay(200);
+    ventilatieOn = !ventilatieOn;
+    controlManual = true;
+    digitalWrite(pinVentLed, ventilatieOn ? HIGH : LOW);
+    digitalWrite(pinVentMotor, ventilatieOn ? HIGH : LOW);
+  }
+
+ 
+  int valoare = analogRead(pinTemp);
+  float volt = valoare * 5.0 / 1023.0;
+  float temperatura = (volt - 0.5) * 100.0;
+
+  
+  if (temperatura < 16) temperatura = 16;
+  if (temperatura > 30) temperatura = 30;
+
+
+  Serial.print("T:");
+  Serial.println(temperatura);
+
+
+  if (!controlManual) {
+    if (temperatura < 22.0) {
+      ventilatieOn = true;
+      digitalWrite(pinVentLed, HIGH);
+      digitalWrite(pinVentMotor, HIGH);
+    } else {
+      ventilatieOn = false;
+      digitalWrite(pinVentLed, LOW);
+      digitalWrite(pinVentMotor, LOW);
+    }
+  }
+
+ 
+  if (Serial.available()) {
+    String comanda = Serial.readStringUntil('\n');
+
+    if (comanda == "L1") {
+      luminaOn = true;
+      digitalWrite(pinLumina, HIGH);
+    } else if (comanda == "L0") {
+      luminaOn = false;
+      digitalWrite(pinLumina, LOW);
+    } else if (comanda == "V1") {
+      ventilatieOn = true;
+      controlManual = true;
+      digitalWrite(pinVentLed, HIGH);
+      digitalWrite(pinVentMotor, HIGH);
+    } else if (comanda == "V0") {
+      ventilatieOn = false;
+      controlManual = true;
+      digitalWrite(pinVentLed, LOW);
+      digitalWrite(pinVentMotor, LOW);
+    } else if (comanda == "VA") {
+      
+      controlManual = false;
+    }
+  }
+
+  delay(200);
+}

@@ -1,0 +1,13 @@
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\bin\Release\Properties\Images\led_off.png
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\bin\Release\Properties\Images\led_on.png
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\bin\Release\AutomatizareCladire.exe.config
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\bin\Release\AutomatizareCladire.exe
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\bin\Release\AutomatizareCladire.pdb
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.csproj.AssemblyReference.cache
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.Dashboard.resources
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.Form1.resources
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.Properties.Resources.resources
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.csproj.GenerateResource.cache
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.csproj.CoreCompileInputs.cache
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.exe
+C:\Users\Manu\OneDrive - Technical University of Cluj-Napoca\Desktop\AutomatizareCladire\obj\Release\AutomatizareCladire.pdb

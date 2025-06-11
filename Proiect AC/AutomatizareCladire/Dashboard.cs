@@ -1,0 +1,170 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO.Ports;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AutomatizareCladire
+{
+    public partial class Dashboard : Form
+    {
+        bool luminaOn = false;
+        bool ventilatieOn = false;
+        Random rand = new Random();
+        Timer timerTemp = new Timer();
+        double tempCurenta = 22.0;
+
+        SerialPort portSerial = new SerialPort();
+
+        public Dashboard()
+        {
+            InitializeComponent();
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            picLed.Image = Properties.Resources.led_off;
+            picVent.Image = Properties.Resources.led_off;
+
+            trackTemp.Minimum = 16;
+            trackTemp.Maximum = 30;
+            trackTemp.Value = 22;
+            lblTempDorita.Text = "Temp dorită: 22°C";
+
+            timerTemp.Interval = 3000;
+            timerTemp.Tick += TimerTemp_Tick;
+            timerTemp.Start();
+
+            try
+            {
+                portSerial.PortName = "COM3"; 
+                portSerial.BaudRate = 9600;
+                portSerial.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eroare la deschiderea portului serial: " + ex.Message);
+            }
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (portSerial.IsOpen)
+            {
+                portSerial.Close();
+            }
+        }
+
+        private void btnLumina_Click(object sender, EventArgs e)
+        {
+            luminaOn = !luminaOn;
+            lblStatusLumina.Text = luminaOn ? "Lumina: PORNITĂ" : "Lumina: OPRITĂ";
+            picLed.Image = luminaOn ? Properties.Resources.led_on : Properties.Resources.led_off;
+        }
+
+        private void btnVent_Click(object sender, EventArgs e)
+        {
+            ventilatieOn = !ventilatieOn;
+            lblVent.Text = ventilatieOn ? "Ventilație: PORNITĂ" : "Ventilație: OPRITĂ";
+            picVent.Image = ventilatieOn ? Properties.Resources.led_on : Properties.Resources.led_off;
+
+            if (portSerial.IsOpen)
+            {
+                portSerial.Write(ventilatieOn ? "1" : "0");
+            }
+        }
+
+        private void trackTemp_Scroll(object sender, EventArgs e)
+        {
+            int tempDorita = trackTemp.Value;
+            lblTempDorita.Text = "Temp dorită: " + tempDorita + "°C";
+
+            if (tempDorita < 22)
+            {
+                ventilatieOn = true;
+                lblVent.Text = "Ventilație: PORNITĂ";
+                picVent.Image = Properties.Resources.led_on;
+
+                if (portSerial.IsOpen)
+                    portSerial.Write("1");
+            }
+            else
+            {
+                ventilatieOn = false;
+                lblVent.Text = "Ventilație: OPRITĂ";
+                picVent.Image = Properties.Resources.led_off;
+
+                if (portSerial.IsOpen)
+                    portSerial.Write("0");
+            }
+        }
+
+        private void TimerTemp_Tick(object sender, EventArgs e)
+        {
+            int tempDorita = trackTemp.Value;
+
+            if (tempCurenta < tempDorita)
+                tempCurenta += 0.3;
+            else if (tempCurenta > tempDorita)
+                tempCurenta -= 0.3;
+            else
+                tempCurenta += rand.NextDouble() * 0.2 - 0.1;
+
+            lblTempCurenta.Text = "Temp curentă: " + tempCurenta.ToString("0.0") + "°C";
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 loginForm = new Form1();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void ieșireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void resetareLuminăToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            luminaOn = false;
+            lblStatusLumina.Text = "Lumina: OPRITĂ";
+            picLed.Image = Properties.Resources.led_off;
+        }
+
+        private void resetareVentilațieToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ventilatieOn = false;
+            lblVent.Text = "Ventilație: OPRITĂ";
+            picVent.Image = Properties.Resources.led_off;
+
+            if (portSerial.IsOpen)
+                portSerial.Write("0");
+        }
+
+        private void despreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Proiect Automatizare Clădiri\nRealizat de: Rus Roxana si Less Rares",
+                            "Aceasta aplicație este utilizată pentru automatizarea clădirilor");
+        }
+
+        
+        private void picLed_Click(object sender, EventArgs e) { }
+        private void picVent_Click(object sender, EventArgs e) { }
+        private void lblTempCurenta_Click(object sender, EventArgs e) { }
+        private void lblVent_Click(object sender, EventArgs e) { }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
+        private void setăriToolStripMenuItem_Click(object sender, EventArgs e) { }
+        private void button2_Click(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void resetareVentilațieToolStripMenuItem_Click(object sender, EventArgs e) { }
+
+     
+    }
+}

@@ -41,7 +41,7 @@ This project implements **complete automation of lighting and ventilation system
 
 ## Installation and Usage
 
-1. Open the schematic and simulation in Tinkercad (add the project link here).
+1. Open the schematic and simulation in Tinkercad.
 2. Upload the Arduino code to the physical board or run the simulation.
 3. Launch the Windows Forms desktop application.
 4. Connect the Arduino via the serial port.

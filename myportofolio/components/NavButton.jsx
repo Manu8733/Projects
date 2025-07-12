@@ -20,24 +20,66 @@ export default function NavButton() {
           className="absolute right-0 mt-4 bg-black/80 text-white rounded-xl shadow-2xl p-4 space-y-3 border border-white/10 animate-slide-in"
           style={{ minWidth: "160px" }}
         >
+          
           <a
-            href="#about"
+          href="#about"
+          className="block px-2 py-1 rounded hover:bg-white/10 transition"
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            const section = document.getElementById("about");
+            section?.scrollIntoView({ behavior: "smooth" });
+            }}
+            >
+              About Me
+              </a>
+
+
+          <a
+            href="#focus"
             className="block px-2 py-1 rounded hover:bg-white/10 transition"
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setOpen(false);
+              const section = document.getElementById("focus");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
-            About Me
+            Focusing on
+          </a>
+          <a
+            href="#skills"
+            className="block px-2 py-1 rounded hover:bg-white/10 transition"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpen(false);
+              const section = document.getElementById("skills");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Skills
           </a>
           <a
             href="#projects"
             className="block px-2 py-1 rounded hover:bg-white/10 transition"
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setOpen(false);
+              const section = document.getElementById("projects");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
             Projects
           </a>
           <a
             href="#contact"
             className="block px-2 py-1 rounded hover:bg-white/10 transition"
-            onClick={() => setOpen(false)}
+            onClick={(e) => { 
+              e.preventDefault();
+              setOpen(false);
+              const section = document.getElementById("contact");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
             Contact Me
           </a>

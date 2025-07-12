@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const skills = [
   "HTML",
@@ -21,6 +21,22 @@ export default function SkillsSlider() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [isScrollable, setIsScrollable] = useState(false);
+
+  useEffect(() => {
+    const checkScrollable = () => {
+      if (containerRef.current) {
+        setIsScrollable(
+          containerRef.current.scrollWidth > containerRef.current.clientWidth
+        );
+      }
+    };
+
+    checkScrollable();
+    window.addEventListener("resize", checkScrollable);
+
+    return () => window.removeEventListener("resize", checkScrollable);
+  }, []);
 
   const onMouseDown = (e) => {
     setIsDragging(true);
@@ -46,7 +62,9 @@ export default function SkillsSlider() {
       </h2>
       <div
         ref={containerRef}
-        className="flex gap-6 overflow-x-auto cursor-grab no-scrollbar transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-cyan-500/50"
+        className={`flex gap-6 overflow-x-auto cursor-grab no-scrollbar transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-cyan-500/50 ${
+          !isScrollable ? "justify-center" : ""
+        }`}
         onMouseDown={onMouseDown}
         onMouseLeave={onMouseLeave}
         onMouseUp={onMouseUp}

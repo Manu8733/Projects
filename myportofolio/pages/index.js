@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import Head from "next/head";
 import ParticlesBackground from "../components/ParticlesBackground";
 import NavButton from "../components/NavButton";
@@ -17,7 +18,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Analytics/>
       <NavButton />
       <ParticlesBackground />
       {/* Doar una dintre animații — opțional */}

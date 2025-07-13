@@ -4,7 +4,7 @@ import ParticlesBackground from "../components/ParticlesBackground";
 import NavButton from "../components/NavButton";
 import ProjectsSlider from "../components/ProjectsSlider";
 import SkillsSlider from "../components/SkillsSlider";
-// import ResponsiveStarsBackground from "../components/ResponsiveStarsBackground";
+
 import VolunteerSlider from "../components/VolunteerSlider";
 
 export default function Home() {

@@ -1,7 +1,6 @@
 ### 👋 Hey there, I’m Emanuel (Manu8733)
 
 🔭 Currently focusing on becoming a better web developer.  
-🌱 Learning PHP, Ruby on Rails, React, JavaScript, and Git versioning.  
 🎯 Passionate about automation, code clarity, and clean design.  
 📫 Reach me at: ebejerea@gmail.com  
 

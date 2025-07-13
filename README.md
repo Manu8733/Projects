@@ -1,4 +1,4 @@
-### 👋 Hey there, I’m Emanuel (Manu8733)
+### 👋 Hey there, I’m Emanuel 
 
 🔭 Currently focusing on becoming a better web developer.  
 🎯 Passionate about automation, code clarity, and clean design.  

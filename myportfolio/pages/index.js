@@ -1,10 +1,10 @@
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Head from "next/head";
 import ParticlesBackground from "../components/ParticlesBackground";
 import NavButton from "../components/NavButton";
 import ProjectsSlider from "../components/ProjectsSlider";
 import SkillsSlider from "../components/SkillsSlider";
-
 import VolunteerSlider from "../components/VolunteerSlider";
 
 export default function Home() {
@@ -19,6 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Analytics/>
+      <SpeedInsights/>
       <NavButton />
       <ParticlesBackground />
       {/* Doar una dintre animații — opțional */}
@@ -118,7 +119,7 @@ export default function Home() {
         {/* Projects */}
         <ProjectsSlider />
 
-        {/* Volunteer Work */}
+        {/* Volunteer */}
         <VolunteerSlider />
 
         {/* Contact */}

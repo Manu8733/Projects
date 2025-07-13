@@ -52,7 +52,7 @@ export default function Home() {
             </button>
 
             <a
-              href="/Emanuel Bejerea CV.pdf"
+              href="/Emanuel Bejerea Resume.pdf"
               download
               className="bg-transparent border border-[#00ADB5] text-[#00ADB5] px-6 py-2 rounded hover:bg-[#00ADB5] hover:text-black transition "
             >

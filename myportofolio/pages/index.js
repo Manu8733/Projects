@@ -3,6 +3,8 @@ import NavButton from "../components/NavButton";
 import ProjectsSlider from "../components/ProjectsSlider";
 import SkillsSlider from "../components/SkillsSlider";
 import ResponsiveStarsBackground from "../components/ResponsiveStarsBackground";
+import VolunteerSlider from "../components/VolunteerSlider";
+
 
 export default function Home() {
   return (
@@ -104,15 +106,15 @@ export default function Home() {
   </div>
 </section>
 
-
-
-
-
         {/* Skills */}
        <SkillsSlider />
 
         {/* Projects */}
         <ProjectsSlider />
+
+        {/* Volunteer Work */}
+        <VolunteerSlider />
+
 
         {/* Contact */}
         <section className="text-center py-20" id="contact">
@@ -153,9 +155,6 @@ export default function Home() {
       <i className="fas fa-envelope w-10 h-10"></i>
     </a>
 
-
-    
-
     {/* Linktree */}
     <a
       href="https://linktr.ee/Manu8733"
@@ -172,9 +171,6 @@ export default function Home() {
     </a>
   </div>
 </section>
-
-
-
 
 
         {/* Footer */}

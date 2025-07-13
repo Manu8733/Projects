@@ -72,6 +72,18 @@ export default function NavButton() {
             Projects
           </a>
           <a
+          href="#volunteer"
+          className="block px-2 py-1 rounded hover:bg-white/10 transition"
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            const section = document.getElementById("volunteer");
+            section?.scrollIntoView({ behavior: "smooth" });
+            }}
+            >
+              Volunteering
+              </a>
+          <a
             href="#contact"
             className="block px-2 py-1 rounded hover:bg-white/10 transition"
             onClick={(e) => { 

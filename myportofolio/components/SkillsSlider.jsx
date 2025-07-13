@@ -18,10 +18,10 @@ const skills = [
 
 export default function SkillsSlider() {
   const containerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
   const [isScrollable, setIsScrollable] = useState(false);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
 
   useEffect(() => {
     const checkScrollable = () => {
@@ -34,25 +34,29 @@ export default function SkillsSlider() {
 
     checkScrollable();
     window.addEventListener("resize", checkScrollable);
-
     return () => window.removeEventListener("resize", checkScrollable);
   }, []);
 
-  const onMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - containerRef.current.offsetLeft);
-    setScrollLeft(containerRef.current.scrollLeft);
+  const onPointerDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX || e.touches?.[0]?.pageX || 0;
+    scrollLeft.current = containerRef.current.scrollLeft;
+    containerRef.current.style.cursor = "grabbing";
+    containerRef.current.setPointerCapture(e.pointerId);
   };
 
-  const onMouseLeave = () => setIsDragging(false);
-  const onMouseUp = () => setIsDragging(false);
-
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
+  const onPointerMove = (e) => {
+    if (!isDragging.current) return;
     e.preventDefault();
-    const x = e.pageX - containerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // viteza scroll-ului
-    containerRef.current.scrollLeft = scrollLeft - walk;
+    const x = e.pageX || e.touches?.[0]?.pageX || 0;
+    const walk = (x - startX.current) * 2; // viteza scroll-ului
+    containerRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const onPointerUp = (e) => {
+    isDragging.current = false;
+    containerRef.current.style.cursor = "grab";
+    containerRef.current.releasePointerCapture(e.pointerId);
   };
 
   return (
@@ -65,22 +69,10 @@ export default function SkillsSlider() {
         className={`flex gap-6 overflow-x-auto cursor-grab no-scrollbar transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-cyan-500/50 ${
           !isScrollable ? "justify-center" : ""
         }`}
-        onMouseDown={onMouseDown}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
-        onMouseMove={onMouseMove}
-        onTouchStart={(e) => {
-          setIsDragging(true);
-          setStartX(e.touches[0].pageX - containerRef.current.offsetLeft);
-          setScrollLeft(containerRef.current.scrollLeft);
-        }}
-        onTouchEnd={() => setIsDragging(false)}
-        onTouchMove={(e) => {
-          if (!isDragging) return;
-          const x = e.touches[0].pageX - containerRef.current.offsetLeft;
-          const walk = (x - startX) * 2;
-          containerRef.current.scrollLeft = scrollLeft - walk;
-        }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerLeave={onPointerUp}
       >
         {skills.map((skill) => (
           <div

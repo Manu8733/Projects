@@ -54,17 +54,29 @@ export default function ProjectsSlider() {
     touchStartX.current = 0;
     touchEndX.current = 0;
   };
+const [showTooltip, setShowTooltip] = useState(false);
 
   return (
+    
     <section className="py-20 px-4 bg-hidden" id="projects">
+      
      <h2 className="text-3xl font-semibold mb-8 text-center text-white flex items-center justify-center gap-2">
-  Live Demos
-  <div className="relative group cursor-pointer">
+      
+  <span>Live Demos</span>
+  <span
+    className="relative group cursor-pointer"
+    onClick={() => setShowTooltip(!showTooltip)}
+  >
     <i className="fas fa-info-circle text-cyan-500 text-xl"></i>
-    <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 whitespace-nowrap">
-      Source code available on my GitHub profile
-    </div>
-  </div>
+    <div
+  className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-sm shadow z-10 whitespace-normal w-max max-w-[90vw] text-center ${
+    showTooltip ? "opacity-100 visible" : "opacity-0 invisible"
+  } transition-opacity duration-200`}
+>
+  Source code is available<br />on my GitHub profile
+</div>
+
+  </span>
 </h2>
 
 

@@ -6,7 +6,7 @@ export default function MusicPopUp() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(false);
-    }, 2500);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,7 +28,7 @@ export default function MusicPopUp() {
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
           font-weight: 600;
           z-index: 50;
-          animation: fadeInOut 2.5s ease forwards;
+          animation: fadeInOut 3.5s ease forwards;
           max-width: 250px;
           text-align: center;
         }

@@ -69,7 +69,7 @@ export default function Home() {
 
         {/* About Me */}
         <section className="max-w-4xl mx-auto py-20 px-4" id="about">
-          <h2 className="text-3xl font-semibold mb-4">About Me</h2>
+          <h2 className="text-3xl font-semibold mb-4 text-center ">About Me</h2>
           <p className="text-lg leading-relaxed">
             I’m Emanuel, a curious and open-minded student passionate about technology and creativity. I thrive in diverse teams, learn from feedback, and believe great projects come from collaboration and openness.
           </p>

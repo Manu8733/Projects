@@ -69,20 +69,29 @@ export default function VolunteerSlider() {
 
   return (
     <section className="py-20 px-4 bg-hidden" id="volunteer">
+      
       <h2 className="text-3xl font-semibold mb-8 text-center text-white">
         Volunteering
       </h2>
 
       <div className="max-w-screen-lg mx-auto relative flex flex-col items-center">
         {/* Card */}
+        
+        
         <div
-          className={`w-full rounded-lg overflow-hidden shadow-lg border border-gray-700 bg-gray-900 p-6 transition-opacity duration-300 ${
-            fade ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
+  className={`w-full rounded-2xl overflow-hidden p-6 transition-opacity duration-300 ${
+    fade ? "opacity-100 scale-100" : "opacity-0 scale-95"
+  }`}
+  style={{
+    border: "2px solid white",
+    boxShadow: "0 0 10px #ffffff, 0 0 20px #ffffff88",
+    backgroundColor: "rgba(0,0,0,0.2)",
+  }}
+  onTouchStart={onTouchStart}
+  onTouchMove={onTouchMove}
+  onTouchEnd={onTouchEnd}
+>
+
           <img
   src={volunteerWork[currentIndex].icon}
   alt={volunteerWork[currentIndex].title}

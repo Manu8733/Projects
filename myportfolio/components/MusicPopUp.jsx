@@ -6,7 +6,7 @@ export default function MusicPopUp() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(false);
-    }, 2500); // 2.5 secunde
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -14,18 +14,50 @@ export default function MusicPopUp() {
   if (!showPopup) return null;
 
   return (
-    <div className="fixed bottom-20 right-6 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 text-center font-semibold animate-fadeInOut max-w-xs">
-  Enjoy some background music while browsing 👇
-  {/* stilurile animate rămân */}
+    <div className="music-popup">
+     Enjoy some background music while browsing 🎧
       <style jsx>{`
-        @keyframes fadeInOut {
-          0% {opacity: 0; transform: translateY(-10px);}
-          10% {opacity: 1; transform: translateY(0);}
-          90% {opacity: 1; transform: translateY(0);}
-          100% {opacity: 0; transform: translateY(-10px);}
-        }
-        .animate-fadeInOut {
+        .music-popup {
+          position: fixed;
+          bottom: 80px; /* un pic deasupra butonului */
+          right: 20px;
+          background: #06b6d4;
+          color: white;
+          padding: 12px 16px;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          font-weight: 600;
+          z-index: 50;
           animation: fadeInOut 2.5s ease forwards;
+          max-width: 250px;
+          text-align: center;
+        }
+
+        .music-popup::after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 75%;
+          transform: translateX(-50%);
+          border-width: 10px 8px 0 8px;
+          border-style: solid;
+          border-color: #06b6d4 transparent transparent transparent;
+        }
+
+        @keyframes fadeInOut {
+          0% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          10%,
+          90% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
         }
       `}</style>
     </div>

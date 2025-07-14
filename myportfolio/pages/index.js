@@ -6,6 +6,8 @@ import NavButton from "../components/NavButton";
 import ProjectsSlider from "../components/ProjectsSlider";
 import SkillsSlider from "../components/SkillsSlider";
 import VolunteerSlider from "../components/VolunteerSlider";
+import MusicPlayer from "../components/MusicPlayer";
+
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <MusicPlayer />
       <Analytics/>
       <SpeedInsights/>
       <NavButton />

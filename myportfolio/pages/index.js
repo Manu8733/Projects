@@ -37,7 +37,7 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-3xl md:text-6xl font-bold mb-4">
             Welcome to my portfolio
           </h1>
           <p className="text-lg md:text-xl mb-6">

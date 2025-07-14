@@ -57,9 +57,7 @@ export default function ProjectsSlider() {
 const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    
-    <section className="py-20 px-4 bg-hidden" id="projects">
-      
+  <section className="py-20 px-4 bg-hidden" id="projects">
      <h2 className="text-3xl font-semibold mb-8 text-center text-white flex items-center justify-center gap-2">
       
   <span>Live Demos</span>
@@ -69,18 +67,16 @@ const [showTooltip, setShowTooltip] = useState(false);
   >
     <i className="fas fa-info-circle text-cyan-500 text-xl"></i>
     <div
-  className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-sm shadow z-10 whitespace-normal w-max max-w-[90vw] text-center ${
-    showTooltip ? "opacity-100 visible" : "opacity-0 invisible"
-  } transition-opacity duration-200`}
->
-  Source code is available<br />on my GitHub profile
-</div>
+    className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-sm shadow z-10 whitespace-normal w-max max-w-[90vw] text-center ${
+      showTooltip ? "opacity-100 visible" : "opacity-0 invisible"
+      } transition-opacity duration-200`}
+      >
+        Source code is available<br />on my GitHub profile
+        </div>
+        </span>
+    </h2>
 
-  </span>
-</h2>
 
-
-      
       <div className="max-w-screen-lg mx-auto relative flex flex-col items-center">
         {/* Video Container */}
         <div

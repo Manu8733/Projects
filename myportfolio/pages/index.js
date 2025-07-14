@@ -7,7 +7,7 @@ import ProjectsSlider from "../components/ProjectsSlider";
 import SkillsSlider from "../components/SkillsSlider";
 import VolunteerSlider from "../components/VolunteerSlider";
 import MusicPlayer from "../components/MusicPlayer";
-
+import MusicPopUp from "../components/MusicPopUp";
 
 export default function Home() {
   return (
@@ -21,6 +21,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MusicPlayer />
+      <MusicPopUp />
       <Analytics/>
       <SpeedInsights/>
       <NavButton />

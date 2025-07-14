@@ -69,7 +69,7 @@ export default function NavButton() {
               section?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Projects
+            Live Demos
           </a>
           <a
           href="#volunteer"

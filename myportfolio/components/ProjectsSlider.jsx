@@ -57,8 +57,18 @@ export default function ProjectsSlider() {
 
   return (
     <section className="py-20 px-4 bg-hidden" id="projects">
-      <h2 className="text-3xl font-semibold mb-8 text-center text-white">Projects</h2>
+     <h2 className="text-3xl font-semibold mb-8 text-center text-white flex items-center justify-center gap-2">
+  Live Demos
+  <div className="relative group cursor-pointer">
+    <i className="fas fa-info-circle text-cyan-500 text-xl"></i>
+    <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 whitespace-nowrap">
+      Source code available on my GitHub profile
+    </div>
+  </div>
+</h2>
 
+
+      
       <div className="max-w-screen-lg mx-auto relative flex flex-col items-center">
         {/* Video Container */}
         <div

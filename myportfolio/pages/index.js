@@ -55,13 +55,14 @@ export default function Home() {
               See my work
             </button>
 
-            <a
-              href="/Emanuel Bejerea Resume.pdf"
-              download
-              className="bg-transparent border border-[#00ADB5] text-[#00ADB5] px-6 py-2 rounded hover:bg-[#00ADB5] hover:text-black transition "
+            <button
+             onClick={() => {
+              window.open("/Emanuel Bejerea Resume.pdf", "_blank");
+              }}
+              className="bg-transparent border border-[#00ADB5] text-[#00ADB5] px-6 py-2 rounded hover:scale-105 transition"
             >
               Download my CV
-            </a>
+            </button>
           </div>
         </section>
 
@@ -80,8 +81,8 @@ export default function Home() {
         </section>
 
         <section className="max-w-4xl mx-auto py-20 px-4" id="focus">
-          <h2 className="text-3xl font-semibold mb-10 text-[#00ADB5] text-center">
-            Focusing On:
+          <h2 className="text-3xl font-semibold mb-10 text-white text-center">
+            Focusing On
           </h2>
           <div className="flex flex-col md:flex-row gap-16 md:gap-24 justify-center">
             {/* Unreal Engine 5 */}

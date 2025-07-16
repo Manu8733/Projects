@@ -5,12 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -72,5 +66,46 @@ html, body, #__next {
 .animate-slide-in {
   animation: slide-in 0.2s ease-out;
 }
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeout {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fadeout {
+  animation: fadeout 0.3s ease-out;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 30px #121212 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.linktree-effect img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.linktree-effect:hover img {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(60%) saturate(500%) hue-rotate(90deg) brightness(105%) contrast(102%);
+}
+
+
+
+
+
+
+
 
 

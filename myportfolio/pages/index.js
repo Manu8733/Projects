@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { useState } from "react";
 import Head from "next/head";
 import ParticlesBackground from "../components/ParticlesBackground";
 import NavButton from "../components/NavButton";
@@ -8,8 +9,10 @@ import SkillsSlider from "../components/SkillsSlider";
 import VolunteerSlider from "../components/VolunteerSlider";
 import MusicPlayer from "../components/MusicPlayer";
 import MusicPopUp from "../components/MusicPopUp";
+import ContactModal from "../components/ContactModal";
 
 export default function Home() {
+   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
       <Head>
@@ -21,6 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MusicPlayer />
+      <ContactModal/>
       <MusicPopUp />
       <Analytics/>
       <SpeedInsights/>
@@ -155,31 +159,39 @@ export default function Home() {
               <i className="fab fa-linkedin w-10 h-10"></i>
             </a>
 
-            {/* Email */}
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=ebejerea@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Email"
-              className="cursor-pointer transition transform hover:scale-125 hover:text-[#00FFC8] pulse w-10 h-10 flex items-center justify-center"
-            >
-              <i className="fas fa-envelope w-10 h-10"></i>
-            </a>
+            <>
+      {/* Iconița Gmail */}
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsModalOpen(true);
+        }}
+        title="Trimite-mi un email"
+        className="cursor-pointer transition transform hover:scale-125 hover:text-[#00FFC8] pulse w-10 h-10 flex items-center justify-center"
+      >
+        <i className="fas fa-envelope w-10 h-10"></i>
+      </a>
+
+      {/* Modalul de contact */}
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
 
             {/* Linktree */}
-            <a
-              href="https://linktr.ee/Manu8733"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Linktree"
-              className="cursor-pointer transition transform hover:scale-125 hover:opacity-80 pulse w-10 h-10 flex items-center justify-center"
-            >
-              <img
-                src="/linktree.webp"
-                alt="Linktree"
-                className="w-10 h-10"
-              />
-            </a>
+         <a
+  href="https://linktr.ee/Manu8733"
+  target="_blank"
+  rel="noopener noreferrer"
+  title="Linktree"
+  className="linktree-effect transition transform hover:scale-135   pulse w-10 h-10 flex items-center justify-center"
+>
+  <img
+    src="/linktree.webp"
+    alt="Linktree"
+    className="w-10 h-10"
+  />
+</a>
+
           </div>
         </section>
 

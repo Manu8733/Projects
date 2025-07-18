@@ -59,4 +59,4 @@ This project implements **complete automation of lighting and ventilation system
 ## Author
 Bejerea Emanuel  
 3rd-year student – Automation and Applied Informatics  
-Faculty of Automation and Computers
+Faculty of Automation and Computers science

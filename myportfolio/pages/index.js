@@ -75,7 +75,7 @@ export default function Home() {
         <section className="max-w-4xl mx-auto py-20 px-4" id="about">
           <h2 className="text-3xl font-semibold mb-4 text-center ">About Me</h2>
           <p className="text-lg leading-relaxed">
-            I’m Emanuel, a curious and open-minded student passionate about technology and creativity. I thrive in diverse teams, learn from feedback, and believe great projects come from collaboration and openness.
+            I’m Emanuel, a technology enthusiast with experience in software testing and web development. I enjoy solving problems, learning new technologies, and collaborating with teams to build reliable and user-friendly digital products.
           </p>
           <ul className="mt-6 space-y-2 text-[#00ADB5] list-disc list-inside">
             <li>Curiosity-driven learning</li>

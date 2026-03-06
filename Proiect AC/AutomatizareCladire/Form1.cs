@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AutomatizareCladire
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+            private void btnLogin_Click(object sender, EventArgs e)
+            {
+            string user = txtUser.Text;
+            string parola = txtPassword.Text;
+
+
+            if (user == "admin" && parola == "1234")
+                {
+                    Dashboard form2 = new Dashboard();
+                    form2.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Date incorecte!");
+                }
+            }
+
+        
+    }
+}

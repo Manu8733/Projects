@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register </title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- Stiluri personalizate -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comforter+Brush&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stiluri suplimentare -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Heebo', sans-serif;
+            background-image: url('./assets/images/login1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        .header {
+            position: relative !important;
+            z-index: 1;
+        }
+
+        .contact-section {
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+            
+        }
+
+        /* Stiluri pentru formularul de înregistrare */
+        form {
+            max-width: 350px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(15px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-button,
+        .register-button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-button {
+            background-color: #007bff;
+        }
+
+        .register-button {
+            background-color: #0056b3;
+            margin-left: 10px;
+        }
+
+        .register-button:hover {
+            background-color: #00408b;
+        }
+
+        /* Stiluri pentru subsol */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        function showPopup(message) {
+            alert(message);
+        }
+    </script>
+</head>
+
+<body id="top">
+    <!-- Antet -->
+    <header class="header" data-header>
+        <div class="container">
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li><a href="index.php" class="navbar-link">Home</a></li>
+                    <li><a href="index.php" class="navbar-link">News</a></li>
+                    <li><a href="desprenoi.php" class="navbar-link">About us</a></li>
+                    <li><a href="Store.php" class="navbar-link active">Store</a></li>
+                    <li><a href="login.html" class="navbar-link active">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Principal -->
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h1 class="section-title">Sign-up</h1>
+                <div class="overlay">
+                    <form id="register-form" method="post" class="login-form" onsubmit="registerUser(event)">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <label for="confirm_password">Confirm Password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                        <div class="button-container">
+                            <button type="submit" class="login-button">Sign-up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Subsol -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 GameBox</p>
+        </div>
+    </footer>
+<script>
+    function registerUser(event) {
+        event.preventDefault(); 
+    
+        var form = event.target; 
+        var formData = new FormData(form); 
+    
+        var password = formData.get('password');
+        var confirmPassword = formData.get('confirm_password');
+    
+        
+        if (password !== confirmPassword) {
+            showPopup("Parolele nu sunt identice.");
+            return;
+        }
+    
+      
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "register.php");
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                
+                if (xhr.responseText.includes("Această adresă de email este deja folosită.")) {
+                    showPopup("Această adresă de email este deja folosită.");
+                } else if (xhr.responseText.includes("success")) {
+                    showPopup("Înregistrarea a avut loc cu succes!");
+                    form.reset(); 
+                    window.location.href = "login.html"; 
+                } else {
+                    showPopup("A apărut o eroare la înregistrare.");
+                }
+            } else {
+                showPopup("A apărut o eroare la înregistrare.");
+            }
+        };
+        xhr.send(formData); 
+    }
+</script>
+    
+</body>
+
+</html>
+
+

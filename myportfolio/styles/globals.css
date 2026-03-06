@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.pulse {
+  animation: pulse 2.5s infinite;
+}
+
+html, body, #__next {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+
+#tsparticles {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1 !important;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeout {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fadeout {
+  animation: fadeout 0.3s ease-out;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 30px #121212 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.linktree-effect img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.linktree-effect:hover img {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(60%) saturate(500%) hue-rotate(90deg) brightness(105%) contrast(102%);
+}
+
+
+
+
+
+
+
+
+

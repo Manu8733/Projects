@@ -62,7 +62,7 @@ export default function Home() {
 
             <button
              onClick={() => {
-              window.open("/Emanuel Bejerea Resume.pdf", "_blank");
+              window.open("/Emanuel_Bejerea_Resume.pdf", "_blank");
               }}
               className="bg-transparent border border-[#00ADB5] text-[#00ADB5] px-6 py-2 rounded hover:scale-105 transition"
             >
